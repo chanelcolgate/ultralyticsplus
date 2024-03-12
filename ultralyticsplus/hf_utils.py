@@ -390,7 +390,7 @@ def push_model_to_hfhub(repo_id, exp_folder, hf_token=None, private=False):
         if file.startswith("events.out.tfevents"):
             delete_file(path_in_repo=file, repo_id=repo_id, token=hf_token)
 
-    tensorboard_log_path = glob(f"{exp_folder}/events.out.tfevents*")[-1]
+    # tensorboard_log_path = glob(f"{exp_folder}/events.out.tfevents*")[-1]
 
     create_repo(
         repo_id=repo_id,
@@ -406,14 +406,14 @@ def push_model_to_hfhub(repo_id, exp_folder, hf_token=None, private=False):
         token=hf_token,
         repo_type="model",
     )
-    upload_file(
-        repo_id=repo_id,
-        path_or_fileobj=str(tensorboard_log_path),
-        path_in_repo=Path(tensorboard_log_path).name,
-        commit_message="Upload yolov8 tensorboard logs",
-        token=hf_token,
-        repo_type="model",
-    )
+    # upload_file(
+    #     repo_id=repo_id,
+    #     path_or_fileobj=str(tensorboard_log_path),
+    #     path_in_repo=Path(tensorboard_log_path).name,
+    #     commit_message="Upload yolov8 tensorboard logs",
+    #     token=hf_token,
+    #     repo_type="model",
+    # )
 
 
 def _push_to_hfhub(
